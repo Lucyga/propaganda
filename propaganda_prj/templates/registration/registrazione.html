@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block head %}
+    <h1 class="h2">Registrazione</h1>
+{% endblock head %}
+
+{% block content %}
+  <form method="POST" novalidate>
+        {% csrf_token %}
+        {{ form|crispy }}
+        <input class="btn btn-primary mt-4" type="submit" value="Crea Account">
+  </form>
+{% endblock content %}

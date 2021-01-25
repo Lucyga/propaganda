@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<h1 class="h2">Elenco Libri</h1>  
+{% endblock head %}
+
+{% block content %}
+
+    <table id="table" class="table table-striped" 
+    data-locale="it-IT" 
+    data-toggle="table" 
+    data-show-columns="true" 
+    data-show-columns-toggle-all="true" 
+    data-show-fullscreen="true" 
+    data-buttons-class="primary" 
+    data-search="true" 
+    data-pagination="true" 
+    data-show-toggle="true"
+    data-show-columns="true"
+    data-pagination="true"
+    data-toolbar="#toolbar"
+>
+    <thead class="thead-dark">
+        <tr>
+            <th data-checkbox="true"></th>
+            <th data-sortable="true">Autore</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for libro in libri.all %}
+        <tr>
+            <td ></td>
+            <td >
+                <a href="{{ libro.get_absolute_url }}" class="list-group-item list-group-item-action">{{ libro.titolo }}</a>
+            </td>               
+        </tr>
+        {%empty%}
+        {%endfor%}
+    </tbody>
+</table>
+
+{% endblock content %}
+
+{% block head_title %}{{ block.super }} | Libreria{% endblock head_title %}

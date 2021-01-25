@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block head %}
+    <h1 class="h2">Scheda</h1>
+{% endblock head %}
+
+{% block content%}
+<div class="container-fluid">
+
+    <div class="row" >
+        <div class="col-md-3">
+            <div class="card">
+                <div class="card-body">
+                    <a href="#"><img class="card-img-top" src="https://via.placeholder.com/150x200" alt="Immagine copertina"></a>
+                    
+                    <h5 class="card-title">{{libri.titolo}}</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">di <b><a href="../autori/{{libri.autore.pk}}" class="card-link">{{libri.autore}}</a></b></h6>
+                    <p class="card-text">Editore: <a href="../editori/{{libri.editore.pk}}" class="card-link">{{libri.editore}}</a></p>
+                    <p class="card-text">ISBN: {{libri.isbn}}</p>
+                    <p class="card-text">
+                        {% for genere in libri.genere.all %}
+                        <a href="../genere/{{genere.pk}}" class="badge badge-primary">{{genere}}</a>
+                        {% endfor %}
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+        <div class="card">
+            <div class="card-body">
+                <p class="card-text">Q.ta: {{libri.quantita}}</p>
+                <p class="card-text">Prezzo: {{libri.prezzo}}</p>
+                <div class="form-row align-items-center">
+                    <div class="col-auto">
+                        <select name="richiesta" id="richiesta" class="form-control">
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                        </select>    
+                    </div>
+                    <div class="col-auto">
+                        <button class="btn btn-primary"><i class="fas fa-plus-circle"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>  
+</div>
+
+{% endblock content %}
+
+    {% block head_title %}
+    {{block.super}} | Dettagli di: {{libri.titolo}}
+    {% endblock head_title %}

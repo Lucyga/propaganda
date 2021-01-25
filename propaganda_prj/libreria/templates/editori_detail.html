@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block head %}
+    <h1 class="h2">{{editori}}</h1>
+{% endblock head %}
+
+{% block content%}
+            <div id="toolbar" class="select">
+                <button class="btn btn-primary">Richiedi</button>
+            </div>
+            <table id="table" class="table table-striped" 
+                data-locale="it-IT" 
+                data-toggle="table" 
+                data-show-columns="true" 
+                data-show-columns-toggle-all="true" 
+                data-show-fullscreen="true" 
+                data-buttons-class="primary" 
+                data-search="true" 
+                data-pagination="true" 
+                data-show-toggle="true"
+                data-show-columns="true"
+                data-pagination="true"
+                data-toolbar="#toolbar">
+                <thead class="thead-dark">
+                    <tr>
+                        <th data-checkbox="true"></th>
+                        <th data-sortable="true">Titolo</th>
+                        <th data-sortable="true">Autore</th>
+                        <th data-sortable="true">ISBN</th>
+                        <th>Tags</th>
+                        <th data-sortable="false">Q.ta</th>
+                        <th data-sortable="true">Prezzo (€)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for libro in editori.libri_per_editore.all %}
+                    <tr>
+                        <td >{{libro.pk}}</td>
+                        <td ><a href="../libro/{{libro.pk}}" class="card-link">{{libro.titolo}}</a></td>
+                        <td ><a href="{{libro.autore.get_absolute_url}}">{{libro.autore}}</a></td>
+                        <td >{{libro.isbn}}</td>
+                        <td >
+                            {% for genere in libro.genere.all %}
+                            <a href="../genere/{{genere.pk}}" class="badge badge-primary">{{genere}}</a>
+                            {% endfor %}
+                            
+                        </td>
+                        <td >{{libro.quantita}}</td>
+                        <td >{{libro.prezzo}} €</td>
+                    </tr>
+                    {%empty%}
+                    {%endfor%}
+                </tbody>
+            </table>
+
+{% endblock content%}
+
+{%block head_title%}
+{{block.super}} | Scheda di: {{autori}}
+{%endblock head_title%}

@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block head %}
+    <h1 class="h2">Logout</h1>
+{% endblock head %}
+
+{% block content %}
+    <p>Logout completato!</p>
+    <a href="{% url 'login' %}">Clicca qui per rieffettuare il login.</a>
+{% endblock content %}
