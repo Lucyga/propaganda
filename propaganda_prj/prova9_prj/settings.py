@@ -38,11 +38,13 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    # applicazioni custom
     'libreria',
     'profilo',
-    
-    
+
+    # applicazioni di terze parti
     'crispy_forms',
+    'crispy_bootstrap5',
 ]
 
 MIDDLEWARE = [
@@ -123,7 +125,9 @@ USE_TZ = True
 # SIMULA L'INVIO DELLA EMAIL RIPORTANDOLA NELLA CONSOLE (TERMINALE)
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
-CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+# IMPOSTAZIONI APPLICAZIONI DI TERZE PARTI
+CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 
 # Static files (CSS, JavaScript, Images)
@@ -132,3 +136,5 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 STATIC_URL = '/static/'
 
 LOGIN_REDIRECT_URL = '/libri'
+
+DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
